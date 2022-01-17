@@ -1,0 +1,6 @@
+tree_manager:
+  type: TreeManagerSlidingWindow
+  n_fix_first_frames: 1
+  n_frames: 40
+  viral_remove_empty_parent: true
+#  type: "none"

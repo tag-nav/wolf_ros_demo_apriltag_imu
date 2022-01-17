@@ -1,0 +1,10 @@
+minimizer: "LEVENBERG_MARQUARDT"
+update_immediately: false
+max_num_iterations: 10
+function_tolerance: 1e-7
+gradient_tolerance: 1e-9
+use_nonmonotonic_steps: false
+period: 0.3                     # note: this must be smaller (i.e. faster) than the KF period in processor_tracker_landmark_apriltag.yaml
+n_threads: 2
+compute_cov: false
+verbose: 0
