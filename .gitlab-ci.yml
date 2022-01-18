@@ -167,7 +167,9 @@ stages:
   - git checkout $CI_COMMIT_BRANCH
   - cd ../..
   - catkin_make
-  - roslaunch wolf_demo_apriltag_imu demo_apriltag_imu.launch rviz:=false
+  - roscd wolf_demo_apriltag_imu/bag
+  - wget https://gitlab.iri.upc.edu/mobile_robotics/wolf_projects/wolf_ros/demos/demo_rosbags/-/raw/master/apriltag_imu/sim/circle_no_clock.bag
+  - roslaunch wolf_demo_apriltag_imu demo_apriltag_imu.launch rviz:=false bag:=circle_no_clock
 
 ############ UBUNTU 16.04 TEST ############
 demo:xenial:
