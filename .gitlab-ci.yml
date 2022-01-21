@@ -168,8 +168,14 @@ stages:
   - cd ../..
   - catkin_make
   - roscd wolf_demo_apriltag_imu/bag
-  - wget https://gitlab.iri.upc.edu/mobile_robotics/wolf_projects/wolf_ros/demos/demo_rosbags/-/raw/master/apriltag_imu/sim/circle_no_clock.bag
-  - roslaunch wolf_demo_apriltag_imu demo_apriltag_imu.launch rviz:=false bag:=circle_no_clock
+  - wget https://gitlab.iri.upc.edu/mobile_robotics/wolf_projects/wolf_ros/demos/demo_rosbags/-/raw/master/apriltag_imu/sim/circle.bag
+  - roslaunch wolf_demo_apriltag_imu demo_apriltag_imu.launch rviz:=false bag:=circle 2> roslaunch_error_messages.log
+  - cat roslaunch_error_messages.log
+  - if [[ "$(cat roslaunch_error_messages.log)" == *"process has finished cleanly"* ]]; then
+  -   echo "============= ROSLAUNCH FINISHED WITHOUT ANY PROBLEM! =================";
+  - else
+  -   exit 1
+  - fi
 
 ############ UBUNTU 16.04 TEST ############
 demo:xenial:
