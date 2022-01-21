@@ -1,5 +1,5 @@
 minimizer: "LEVENBERG_MARQUARDT"
-update_immediately: false
+interrupt_on_problem_change: false
 max_num_iterations: 10
 function_tolerance: 1e-7
 gradient_tolerance: 1e-9
