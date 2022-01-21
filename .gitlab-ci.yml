@@ -179,8 +179,6 @@ demo:xenial:
     - key: wolf_and_deps-xenial
       paths:
       - ci_deps
-  except:
-    - master
   before_script:
     - *preliminaries_definition
     - *install_wolf_definition
@@ -202,8 +200,6 @@ demo:bionic:
     - key: wolf_and_deps-bionic
       paths:
       - ci_deps
-  except:
-    - master
   before_script:
     - *preliminaries_definition
     - *install_wolf_definition
@@ -225,8 +221,6 @@ demo:focal:
     - key: wolf_and_deps-focal
       paths:
       - ci_deps
-  except:
-    - master
   before_script:
     - *preliminaries_definition
     - *install_wolf_definition
