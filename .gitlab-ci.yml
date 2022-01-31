@@ -184,28 +184,6 @@ stages:
   -   exit 1
   - fi
 
-############ UBUNTU 16.04 TEST ############
-demo:xenial:
-  stage: demo
-  image: labrobotica/wolf_vision_deps_ros:16.04
-  cache:
-    - key: wolf_and_deps-xenial
-      paths:
-      - ci_deps
-  before_script:
-    - *preliminaries_definition
-    - *install_wolf_definition
-    - *install_visionutils_definition
-    - *install_wolfvision_definition
-    - *install_apriltag_definition
-    - *install_wolfapriltag_definition
-    - *install_wolfimu_definition
-    - *clone_wolfrosnode_definition
-    - *clone_wolfrosimu_definition
-    - *clone_wolfrosapriltag_definition
-  script:
-    - *demo_definition
-
 ############ UBUNTU 18.04 TEST ############
 demo:bionic:
   stage: demo
