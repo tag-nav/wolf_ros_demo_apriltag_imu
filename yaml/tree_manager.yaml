@@ -1,5 +1,6 @@
 tree_manager:
   type: TreeManagerSlidingWindow
+  plugin: core
   n_fix_first_frames: 1
   n_frames: 40
   viral_remove_empty_parent: true
