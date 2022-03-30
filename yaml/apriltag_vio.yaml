@@ -66,7 +66,7 @@ config:
 
   ROS subscriber:
     -
-      package: "wolf_ros_apriltag"
+      package: "wolf_ros_vision"
       type: "SubscriberCamera"
       topic: "/camera_simu/image_raw"
       sensor_name: "CAMERA"
@@ -103,11 +103,17 @@ config:
       odom_frame_id: "odom"
       base_frame_id: "base_footprint"
       publish_odom_tf: true
-#    -
-#      package: "wolf_ros_imu"
-#      type: "PublisherImuBias"
-#      topic: "/imu_bias"
-#      sensor_name: "IMU"
-#      period: "5"
+    -
+      type: "PublisherApriltagDebug"
+      processor_name: "APRILTAG PROC"
+      topic: "image_debug"
+      package: "wolf_ros_apriltag"
+      period: 0.1
+    # -
+    #   type: "PublisherImuBias"
+    #   package: "wolf_ros_imu"
+    #   topic: "/imu_bias"
+    #   sensor_name: "IMU"
+    #   period: "5"
 
   use_debug_img: true 
