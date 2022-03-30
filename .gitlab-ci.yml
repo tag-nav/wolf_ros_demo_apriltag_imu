@@ -159,6 +159,13 @@ stages:
   - cd wolf_ros_imu
   - git checkout $WOLF_ROS_IMU_BRANCH
 
+.clone_wolfrosvision_template: &clone_wolfrosvision_definition
+  - roscd
+  - cd ../src
+  - git clone ssh://git@gitlab.iri.upc.edu:2202/mobile_robotics/wolf_projects/wolf_ros/wolf_ros_vision.git
+  - cd wolf_ros_vision
+  - git checkout $WOLF_ROS_VISION_BRANCH
+
 .clone_wolfrosapriltag_template: &clone_wolfrosapriltag_definition
   - roscd
   - cd ../src
@@ -202,6 +209,7 @@ demo:bionic:
     - *install_wolfimu_definition
     - *clone_wolfrosnode_definition
     - *clone_wolfrosimu_definition
+    - *clone_wolfrosvision_definition
     - *clone_wolfrosapriltag_definition
   script:
     - *demo_definition
@@ -224,6 +232,7 @@ demo:focal:
     - *install_wolfimu_definition
     - *clone_wolfrosnode_definition
     - *clone_wolfrosimu_definition
+    - *clone_wolfrosvision_definition
     - *clone_wolfrosapriltag_definition
   script:
     - *demo_definition
