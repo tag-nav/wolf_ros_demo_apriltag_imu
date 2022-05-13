@@ -38,6 +38,7 @@ config:
       plugin: "vision"
       extrinsic:
         pose: [0,0,0,  0,0,0,1]  # Simu (e.g. circle.bag)
+      using_raw: true
       follow: "camera_simu.yaml"
     -
       type: "SensorImu"
