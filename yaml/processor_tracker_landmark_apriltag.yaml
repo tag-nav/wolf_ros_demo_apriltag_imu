@@ -19,6 +19,9 @@ tag_width_default:    0.2   # used if tag width not specified   -- Simu $$
 $tag_widths:
     -1: 0.0
 
+# choose the type of factor used when building the problem
+use_proj_factor: false
+
 # used for covariance propagation 
 std_pix:          4   # pixel error $$
 
@@ -32,10 +35,6 @@ keyframe_vote:
   min_features_for_keyframe:  1
 
 max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
-
-reestimate_last_frame: false   # for a better prior on the new keyframe: use only if no motion processor
-
-add_3d_cstr: false             # add 3D constraints between the KF so that they do not jump when using apriltag only
 
 apply_loss_function: false
 
