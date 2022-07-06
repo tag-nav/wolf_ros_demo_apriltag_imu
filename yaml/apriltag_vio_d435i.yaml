@@ -1,0 +1,120 @@
+config:
+
+  debug:
+    profiling: true
+    profiling_file: "~/wolf_demo_apriltag_profiling.txt"
+    print_problem: false
+    print_depth: 2             # only if print_problem
+    print_state: true         # only if print_problem
+    print_constr_by: false     # only if print_problem
+    print_metric: true        # only if print_problem
+    print_state_blocks: false  # only if print_problem
+    print_period: 0.2            # only if print_problem
+   
+  problem:
+    node_rate: 100
+    follow: "tree_manager.yaml"
+    frame_structure: "POV"
+    dimension: 3
+    prior:
+      mode: "initial_guess"
+      $state:
+        P: [0,0,0]
+        O: [1,0,0,0]  # arbitrary
+        V: [0,0,0]
+      $sigma:
+       P: [0.00001, 0.00001, 0.00001]
+       O: [3, 3, 3]
+       V: [0.1, 0.1, 0.1]
+      time_tolerance: 0.001
+      
+  solver:
+    follow: "solver.yaml"
+
+  sensors:
+    -
+      type: "SensorCamera"
+      name: "CAMERA"
+      plugin: "vision"
+      extrinsic:
+        pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
+        # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # D435i left infra - FAKE
+        # pose: [0,0,0,  0,0,0,1]  # D435i left infra
+      using_raw: true
+      follow: "d435i_infra_left.yaml"
+    -
+      type: "SensorImu"
+      name: "IMU"
+      plugin: "imu"
+      extrinsic:
+        pose:  [0,0,0, 0,0,0,1]
+      follow: "imu_d435i.yaml"
+
+  processors:
+    -
+      type: "ProcessorTrackerLandmarkApriltag"
+      name: "APRILTAG PROC"
+      sensor_name: "CAMERA"
+      plugin: "apriltag"
+      follow: "processor_tracker_landmark_apriltag.yaml"
+    -
+      type: "ProcessorImu"
+      name: "IMU PROC"
+      sensor_name: "IMU"
+      plugin: "imu"
+      apply_loss_function: false
+      follow: "processor_imu.yaml"
+      state_getter: true
+      state_priority: 1
+
+  ROS subscriber:
+    -
+      package: "wolf_ros_vision"
+      type: "SubscriberCamera"
+      topic: "/camera/infra1/image_rect_raw"
+      sensor_name: "CAMERA"
+    -
+      package: "wolf_ros_imu"
+      type: "SubscriberImu"
+      topic: "/camera/imu"
+      sensor_name: "IMU"
+      imu_x_axis: 1
+      imu_y_axis: 2
+      imu_z_axis: 3
+      cov_source: "sensor"
+      in_degrees: false
+
+  ROS publisher:
+    -
+      type: "PublisherGraph"
+      topic: "graph"
+      package: "wolf_ros_node"
+      period: 0.1
+      viz_scale: 0.3
+      text_scale: 0.1
+      landmark_text_z_offset: 0.3
+      landmark_length: 0.5
+      frame_width: 0.01
+      frame_length: 0.1
+      frame_vel_scale: 1.0
+    -
+      type: "PublisherTf"
+      topic: " "
+      package: "wolf_ros_node"
+      period: 0.1
+      map_frame_id: "map"
+      odom_frame_id: "odom"
+      base_frame_id: "base_footprint"
+      publish_odom_tf: true
+    -
+      type: "PublisherApriltagDebug"
+      processor_name: "APRILTAG PROC"
+      topic: "image_debug"
+      package: "wolf_ros_apriltag"
+      period: 0.1
+    # -
+    #   type: "PublisherImuBias"
+    #   package: "wolf_ros_imu"
+    #   topic: "/imu_bias"
+    #   sensor_name: "IMU"
+    #   period: "5"

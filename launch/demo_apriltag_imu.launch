@@ -12,25 +12,34 @@
     <arg name="launch_pref" value="valgrind --tool=callgrind --callgrind-out-file='callgrind.wolf.%p'" if="$(arg profiling)" />
     <arg name="launch_pref" value="gdb -ex run --args" if="$(arg gdb)" />
 
-    <arg name="bag" default="circle_no_clock"/><!--circle_no_clock-->
-    
+    <!-- Convention used by all files -->
+    <!-- <arg name="setup_name" default="simu" /> -->
+    <arg name="setup_name" default="d435i" />
+    <arg name="param_file" default="apriltag_vio_$(arg setup_name).yaml" />
+
+
     <!--ROSBAG PLAY-->
-    <param name="use_sim_time" value="$(arg sim_time)" />
-    <node pkg="rosbag" 
-          type="play" 
-          name="player"
-          required="true"
-          args="-r $(arg speed) 
-                -s $(arg sec)
-                --clock
-                $(find wolf_demo_apriltag_imu)/bag/$(arg bag).bag"/>
+    <!--if the bag argument is not set, no bag is read here-->
+    <arg name="bag" default=""/>
+    <group if="$(eval arg('bag') != '')">
+        <param name="use_sim_time" value="$(arg sim_time)" />
+        <node pkg="rosbag" 
+            type="play" 
+            name="player"
+            required="true"
+            args="-r $(arg speed) 
+                    -s $(arg sec)
+                    --clock
+                    $(find wolf_demo_apriltag_imu)/bag/$(arg bag).bag"/>
+    </group>
+
     
     <!--VISUALIZATION-->
     <group if="$(arg rviz)">
         <node name="rviz"
              pkg="rviz"
              type="rviz" 
-             args="-d $(find wolf_demo_apriltag_imu)/rviz/online.rviz" />
+             args="-d $(find wolf_demo_apriltag_imu)/rviz/$(arg setup_name).rviz" />
     </group>
 
     <!--WOLF-->
@@ -40,6 +49,6 @@
           output="screen"
           required="true"
           launch-prefix="$(arg launch_pref)">
-        <param name="~yaml_file_path" value="$(find wolf_demo_apriltag_imu)/yaml/apriltag_vio.yaml" />
+        <param name="~yaml_file_path" value="$(find wolf_demo_apriltag_imu)/yaml/$(arg param_file)" />
     </node>
 </launch>

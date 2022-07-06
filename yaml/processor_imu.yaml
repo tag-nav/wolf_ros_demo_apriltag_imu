@@ -11,5 +11,5 @@ keyframe_vote:
 bootstrap:
     enable: true 
     method: "G"             # methods: "STATIC", "G" or "V0_G"
-    averaging_length: 0.4  # seconds
+    averaging_length: 0.05  # seconds
     keyframe_provider_processor_name: "processor_other_name" # Not yet implemented

@@ -1,7 +1,7 @@
 config:
 
   debug:
-    profiling: false
+    profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
     print_problem: false
     print_depth: 2             # only if print_problem
@@ -48,7 +48,7 @@ config:
       plugin: "imu"
       extrinsic:
         pose:  [0,0,0, 0,0,0,1]
-      follow: "imu_intrinsics.yaml"
+      follow: "imu_simu.yaml"
 
   processors:
     -
