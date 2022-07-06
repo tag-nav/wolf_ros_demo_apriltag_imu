@@ -41,7 +41,7 @@ config:
         # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # D435i left infra - FAKE
         # pose: [0,0,0,  0,0,0,1]  # D435i left infra
       using_raw: true
-      follow: "d435i_infra_left.yaml"
+      follow: "camera_d435i.yaml"
     -
       type: "SensorImu"
       name: "IMU"
