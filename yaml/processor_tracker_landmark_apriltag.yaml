@@ -1,42 +1,49 @@
+# ProcessorBase
+time_tolerance: 0.02
+apply_loss_function: false
+
+# ProcessorTracker
+max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
+
+# MotionProvider
+state_getter: true
+state_priority: 2
+
 # detector parameters:
 quad_decimate:      0.0      # doing quad detection at lower resolution to speed things up (see end of file)
+# quad_decimate:      1.5      # doing quad detection at lower resolution to speed things up (see end of file)
 quad_sigma:         0.0	   # gaussian blur good for noisy images, may be recommended with quad_decimate. Kernel size adapted (see end of this file)
-nthreads:           8       # how many thread during tag detection (does not change much?)
+nthreads:           8       # how many thread during tag detection
 debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
-ippe_min_ratio:     2 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
+
+ippe_min_ratio:     10 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
 ippe_max_rep_error: 100     # to deactivate, set at something big (100)
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
 tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
 # tag_width_default:    0.165   # used if tag width not specified -- IRI $$
-tag_width_default:    0.2   # used if tag width not specified   -- Simu $$
+# tag_width_default:    0.2   # used if tag width not specified   -- Simu $$
 # tag_width_default:    0.055   # used if tag width not specified   -- Calibration $$
 # tag_width_default:    0.166   # used if tag width not specified -- LAAS (B181) $$
-# tag_width_default:    0.162   # used if tag width not specified -- LAAS, 04/07 $$
+tag_width_default:    0.168   # used if tag width not specified -- LAAS, 07/22 $$
 
 # specific tag widths if using tags of different sizes
 $tag_widths:
     -1: 0.0
 
 # choose the type of factor used when building the problem
-use_proj_factor: false
+use_proj_factor: true
 
 # used for covariance propagation 
 std_pix:          4   # pixel error $$
 
-time_tolerance: 0.02
-    
 keyframe_vote:
   voting_active:              true
   nb_vote_for_every_first:    1
   min_time_span:              0.1    # s
   max_time_span:              0.3    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
   min_features_for_keyframe:  1
-
-max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
-
-apply_loss_function: false
 
 ###############
 # Apriltag settings

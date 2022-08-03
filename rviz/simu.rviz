@@ -140,7 +140,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /wolf_ros_node/image_debug
+      Image Topic: /wolf_ros_node/apriltag_detections
       Max Value: 1
       Median window: 5
       Min Value: 0

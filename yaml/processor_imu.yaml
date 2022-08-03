@@ -1,5 +1,8 @@
 time_tolerance: 0.0025         # Time tolerance for joining KFs
 unmeasured_perturbation_std: 0.000001
+apply_loss_function: false
+state_getter: true
+state_priority: 1
 
 keyframe_vote:
     voting_active:      false
@@ -11,5 +14,5 @@ keyframe_vote:
 bootstrap:
     enable: true 
     method: "G"             # methods: "STATIC", "G" or "V0_G"
-    averaging_length: 0.05  # seconds
+    averaging_length: 0.01  # seconds
     keyframe_provider_processor_name: "processor_other_name" # Not yet implemented

@@ -62,10 +62,7 @@ config:
       name: "IMU PROC"
       sensor_name: "IMU"
       plugin: "imu"
-      apply_loss_function: false
       follow: "processor_imu.yaml"
-      state_getter: true
-      state_priority: 1
 
   ROS subscriber:
     -
@@ -78,9 +75,6 @@ config:
       type: "SubscriberImu"
       topic: "/imu/imu_raw"
       sensor_name: "IMU"
-      imu_x_axis: 1
-      imu_y_axis: 2
-      imu_z_axis: 3
       cov_source: "sensor"
       in_degrees: false
 
@@ -109,7 +103,7 @@ config:
     -
       type: "PublisherApriltagDebug"
       processor_name: "APRILTAG PROC"
-      topic: "image_debug"
+      topic: "apriltag_detections"
       package: "wolf_ros_apriltag"
       period: 0.1
     # -

@@ -12,21 +12,21 @@ config:
     print_period: 0.2            # only if print_problem
    
   problem:
-    node_rate: 200
+    node_rate: 100
     follow: "tree_manager.yaml"
-    frame_structure: "POV"
+    frame_structure: "PO"
     dimension: 3
     prior:
-      mode: "initial_guess"
+      mode: "factor"
       $state:
         P: [0,0,0]
-        O: [1,0,0,0]  # arbitrary
+        O: [1,0,0,0]  # x,y,z,w  (1,0,0,0) means: X front, Y right, Z down  -   GROUNDTRUTH
         V: [0,0,0]
       $sigma:
        P: [0.00001, 0.00001, 0.00001]
-       O: [3, 3, 3]
+       O: [0.01, 0.01, 0.01]
        V: [0.1, 0.1, 0.1]
-      time_tolerance: 0.005
+      time_tolerance: 0.001
       
   solver:
     follow: "solver.yaml"
@@ -37,18 +37,9 @@ config:
       name: "CAMERA"
       plugin: "vision"
       extrinsic:
-        pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
-        # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
-        # pose: [0,0,0,  0,0,0,1]
+        pose: [0,0,0,  0,0,0,1]  # Simu (e.g. circle.bag)
       using_raw: true
-      follow: "camera_d435i.yaml"
-    -
-      type: "SensorImu"
-      name: "IMU"
-      plugin: "imu"
-      extrinsic:
-        pose:  [0,0,0, 0,0,0,1]
-      follow: "imu_d435i.yaml"
+      follow: "camera_simu.yaml"
 
   processors:
     -
@@ -57,26 +48,13 @@ config:
       sensor_name: "CAMERA"
       plugin: "apriltag"
       follow: "processor_tracker_landmark_apriltag.yaml"
-    -
-      type: "ProcessorImu"
-      name: "IMU PROC"
-      sensor_name: "IMU"
-      plugin: "imu"
-      follow: "processor_imu.yaml"
 
   ROS subscriber:
     -
       package: "wolf_ros_vision"
       type: "SubscriberCamera"
-      topic: "/camera/infra1/image_rect_raw"
+      topic: "/camera_simu/image_raw"
       sensor_name: "CAMERA"
-    -
-      package: "wolf_ros_imu"
-      type: "SubscriberImu"
-      topic: "/camera/imu"
-      sensor_name: "IMU"
-      cov_source: "sensor"
-      in_degrees: false
 
   ROS publisher:
     -
@@ -106,9 +84,3 @@ config:
       topic: "apriltag_detections"
       package: "wolf_ros_apriltag"
       period: 0.1
-    # -
-    #   type: "PublisherImuBias"
-    #   package: "wolf_ros_imu"
-    #   topic: "/imu_bias"
-    #   sensor_name: "IMU"
-    #   period: "5"

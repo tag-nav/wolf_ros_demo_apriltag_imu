@@ -16,7 +16,7 @@
     <!-- <arg name="setup_name" default="simu" /> -->
     <arg name="setup_name" default="d435i" />
     <!-- Wolf autosetup file name -->
-    <arg name="param_file" default="apriltag_vio_$(arg setup_name).yaml" />
+    <arg name="param_file" default="apriltag_$(arg setup_name).yaml" />
 
 
     <!--ROSBAG PLAY-->
