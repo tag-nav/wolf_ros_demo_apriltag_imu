@@ -4,3 +4,5 @@ ab_initial_stdev:       0.00042     # m/s2    - initial bias
 wb_initial_stdev:       0.00042     # rad/sec - initial bias
 ab_rate_stdev:          0.0001       # m/s2/sqrt(s)
 wb_rate_stdev:          0.0001    # rad/s/sqrt(s)
+
+dynamic_imu_bias: false

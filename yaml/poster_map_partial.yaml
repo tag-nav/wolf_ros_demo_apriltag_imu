@@ -1,0 +1,20 @@
+nlandmarks: 2
+landmarks:
+  -
+    type: "LandmarkApriltag"
+    tag id: 42
+    tag width: 0.1726         # meters
+    position: [1.01,  0.342, -0.042]         # meters
+    orientation: [-0.7071068, 0.7071068, 0, 0]
+    position fixed: true
+    orientation fixed: true
+    transformable: false
+  -
+    type: "LandmarkApriltag"
+    tag id: 44
+    tag width: 0.1726         # meters
+    position: [1.01, -0.343, -0.042]         # meters
+    orientation: [-0.7071068, 0.7071068, 0, 0]
+    position fixed: true
+    orientation fixed: true
+    transformable: false

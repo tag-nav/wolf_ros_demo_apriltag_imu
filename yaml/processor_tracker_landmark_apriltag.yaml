@@ -22,21 +22,31 @@ ippe_max_rep_error: 100     # to deactivate, set at something big (100)
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
 tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
-# tag_width_default:    0.165   # used if tag width not specified -- IRI $$
-# tag_width_default:    0.2   # used if tag width not specified   -- Simu $$
-# tag_width_default:    0.055   # used if tag width not specified   -- Calibration $$
-# tag_width_default:    0.166   # used if tag width not specified -- LAAS (B181) $$
-tag_width_default:    0.168   # used if tag width not specified -- LAAS, 07/22 $$
+# tag widht used if tag width not specified
+# tag_width_default:    0.2     # Simu $$
+# tag_width_default:    0.055   # Calibration $$
+# tag_width_default:    0.168   # pile of tags $$
+tag_width_default:    0.161     # LAAS, Bauzil walls 07/22 $$
 
 # specific tag widths if using tags of different sizes
+# $tag_widths:
+#   -1: 42
+
+# solo3D poster
 $tag_widths:
-    -1: 0.0
+    40: 0.1726
+    41: 0.1726
+    42: 0.1726
+    43: 0.1726
+    44: 0.1726
+    45: 0.1726
+    46: 0.1726
 
 # choose the type of factor used when building the problem
 use_proj_factor: true
 
 # used for covariance propagation 
-std_pix:          4   # pixel error $$
+std_pix:          2   # pixel error $$
 
 keyframe_vote:
   voting_active:              true

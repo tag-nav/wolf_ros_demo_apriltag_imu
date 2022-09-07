@@ -84,4 +84,3 @@ config:
       topic: "apriltag_detections"
       package: "wolf_ros_apriltag"
       period: 0.1
-

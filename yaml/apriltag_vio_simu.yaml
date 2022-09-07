@@ -107,7 +107,7 @@ config:
       package: "wolf_ros_apriltag"
       period: 0.1
     # -
-    #   type: "PublisherImuBias"
+    #   type: "PublisherIImuBias"
     #   package: "wolf_ros_imu"
     #   topic: "/imu_bias"
     #   sensor_name: "IMU"
