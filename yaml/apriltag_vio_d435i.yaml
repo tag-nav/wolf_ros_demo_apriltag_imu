@@ -6,7 +6,7 @@ config:
     print_problem: false
     print_depth: 4             # only if print_problem
     print_state: true         # only if print_problem
-    print_constr_by: false     # only if print_problem
+    print_constr_by: true     # only if print_problem
     print_metric: true        # only if print_problem
     print_state_blocks: true  # only if print_problem
     print_period: 0.2            # only if print_problem
@@ -64,10 +64,10 @@ config:
       plugin: "imu"
       follow: "processor_imu.yaml"
 
-  map:
-    - type: "MapBase"
-    - plugin: "core"
-    - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_partial.yaml"
+  # map:
+  #   - type: "MapBase"
+  #   - plugin: "core"
+  #   - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
 
   ROS subscriber:
     -
@@ -118,3 +118,10 @@ config:
       package: "wolf_ros_apriltag"
       period: 0.1
       follow: "poster_left_apriltags.yaml"
+    -
+      type: "PublisherPose"
+      topic: "current_pose"
+      package: "wolf_ros_node"
+      period: 0.01
+      extrinsics: false
+      frame_id: "map"

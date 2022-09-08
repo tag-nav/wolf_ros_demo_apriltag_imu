@@ -103,7 +103,7 @@ Visualization Manager:
       Marker Topic: /wolf_ros_node/graph_factors
       Name: Factors
       Namespaces:
-        factors_APRILTAG PROC: true
+        factors_APRILTAG PROC: false
         factors_IMU PROC: false
         factors_text_APRILTAG PROC: false
         factors_text_IMU PROC: false
@@ -219,9 +219,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4397968649864197
+      Pitch: 0.419796884059906
       Target Frame: <Fixed Frame>
-      Yaw: 3.3453986644744873
+      Yaw: 3.385399341583252
     Saved: ~
 Window Geometry:
   AprilTag Detections:

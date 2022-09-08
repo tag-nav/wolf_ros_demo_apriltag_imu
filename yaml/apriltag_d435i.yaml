@@ -49,6 +49,11 @@ config:
       plugin: "apriltag"
       follow: "processor_tracker_landmark_apriltag.yaml"
 
+  map:
+    - type: "MapBase"
+    - plugin: "core"
+    - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
+
   ROS subscriber:
     -
       package: "wolf_ros_vision"
