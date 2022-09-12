@@ -12,6 +12,7 @@
   <build_depend>wolf_ros_apriltag</build_depend>
   <build_depend>wolf_ros_imu</build_depend>
   <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

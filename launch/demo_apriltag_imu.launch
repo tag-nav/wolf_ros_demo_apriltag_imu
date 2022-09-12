@@ -45,6 +45,13 @@
 
     <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
 
+    <node type="publisher_pose.py"
+          name="publisher_pose"
+          pkg="wolf_demo_apriltag_imu"
+          >
+    </node>
+
+
     <!--WOLF-->
     <node type="wolf_ros_node" 
           name="wolf_ros_node" 

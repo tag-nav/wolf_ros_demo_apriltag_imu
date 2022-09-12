@@ -1,6 +1,6 @@
 # ProcessorBase
 time_tolerance: 0.02
-apply_loss_function: false
+apply_loss_function: true
 
 # ProcessorTracker
 max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)

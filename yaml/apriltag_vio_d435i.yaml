@@ -49,6 +49,18 @@ config:
       extrinsic:
         pose:  [0,0,0, 0,0,0,1]
       follow: "imu_d435i.yaml"
+    - 
+      type: "SensorPose"
+      name: "sensor Pose"
+      plugin: "core"
+      extrinsic:
+        pose: [0,0,0, 0,0,0,1]
+      std_px: 100
+      std_py: 100
+      std_pz: 0.001
+      std_ox: 10
+      std_oy: 10
+      std_oz: 10
 
   processors:
     -
@@ -63,6 +75,16 @@ config:
       sensor_name: "IMU"
       plugin: "imu"
       follow: "processor_imu.yaml"
+
+    - 
+      type: "ProcessorPose"
+      name: "prc Pose"
+      plugin: "core"
+      sensor_name: "sensor Pose"
+      time_tolerance: 0.01
+      keyframe_vote:
+        voting_active:    false
+      apply_loss_function: false
 
   map:
     - type: "MapBase"
@@ -82,6 +104,11 @@ config:
       sensor_name: "IMU"
       cov_source: "sensor"
       in_degrees: false
+    # -
+    #   package: "wolf_ros_node"
+    #   type: "SubscriberPose"
+    #   topic: "/pose_altitude"
+    #   sensor_name: "sensor Pose"
 
   ROS publisher:
     -
