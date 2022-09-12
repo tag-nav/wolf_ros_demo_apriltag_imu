@@ -3,12 +3,12 @@ config:
   debug:
     profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
-    print_problem: false
+    print_problem: true
     print_depth: 2             # only if print_problem
-    print_state: true         # only if print_problem
+    # print_state: true         # only if print_problem
     print_constr_by: false     # only if print_problem
     print_metric: true        # only if print_problem
-    print_state_blocks: false  # only if print_problem
+    print_state_blocks: true  # only if print_problem
     print_period: 0.2            # only if print_problem
    
   problem:
