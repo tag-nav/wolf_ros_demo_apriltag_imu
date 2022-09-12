@@ -43,7 +43,7 @@
              args="-d $(find wolf_demo_apriltag_imu)/rviz/$(arg setup_name).rviz" />
     </group>
 
-    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
+    <!-- <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/> -->
 
     <node type="publisher_pose.py"
           name="publisher_pose"

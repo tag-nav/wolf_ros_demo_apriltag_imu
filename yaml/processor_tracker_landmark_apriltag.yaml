@@ -6,7 +6,7 @@ apply_loss_function: false
 max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
 
 # MotionProvider
-state_getter: true
+state_getter: false
 state_priority: 2
 
 # detector parameters:
@@ -17,7 +17,7 @@ nthreads:           8       # how many thread during tag detection
 debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
 
-ippe_min_ratio:     10 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
+ippe_min_ratio:     30 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
 ippe_max_rep_error: 100     # to deactivate, set at something big (100)
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families

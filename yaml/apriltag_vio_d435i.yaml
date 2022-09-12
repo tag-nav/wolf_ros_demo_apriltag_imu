@@ -3,7 +3,7 @@ config:
   debug:
     profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
-    print_problem: true
+    print_problem: false
     print_depth: 4             # only if print_problem
     print_state: true         # only if print_problem
     print_constr_by: true     # only if print_problem
