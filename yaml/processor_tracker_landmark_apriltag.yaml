@@ -26,21 +26,22 @@ tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
 # tag_width_default:    0.2     # Simu $$
 # tag_width_default:    0.055   # Calibration $$
 # tag_width_default:    0.168   # pile of tags $$
-tag_width_default:    0.161     # LAAS, Bauzil walls 07/22 $$
+# tag_width_default:    0.161     # LAAS, Bauzil walls 07/22 $$
+tag_width_default:    0.1675    # Joan at IRI 09/22 $$
 
 # specific tag widths if using tags of different sizes
-# $tag_widths:
-#   -1: 42
-
-# solo3D poster
 $tag_widths:
-    40: 0.1726
-    41: 0.1726
-    42: 0.1726
-    43: 0.1726
-    44: 0.1726
-    45: 0.1726
-    46: 0.1726
+  -1: 42
+
+# # solo3D poster
+# $tag_widths:
+#     40: 0.1726
+#     41: 0.1726
+#     42: 0.1726
+#     43: 0.1726
+#     44: 0.1726
+#     45: 0.1726
+#     46: 0.1726
 
 # choose the type of factor used when building the problem
 use_proj_factor: true
@@ -51,8 +52,8 @@ std_pix:          2   # pixel error $$
 keyframe_vote:
   voting_active:              true
   nb_vote_for_every_first:    1
-  min_time_span:              0.1    # s
-  max_time_span:              0.3    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
+  min_time_span:              0.08    # s
+  max_time_span:              0.2    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
   min_features_for_keyframe:  1
 
 ###############

@@ -1,0 +1,78 @@
+SOLVER -----------------------------
+
+SolverManager:
+Total values:
+	Solving state:          1.57983 s - executions: 119
+		Update problem:   0.013089 s (0.828509 %)
+		Solver:           1.56245 s (98.9004 %)
+		Update state:     0.004103 s (0.259712 %)
+	Solving covariance:     0 s - executions: 0
+Average:
+	Solving state:          13.2758 ms
+		Update problem:   0.109992 ms
+		Solver:           13.1299 ms
+		Update state:     0.034479 ms
+	Solving covariance:     -nan ms
+Max values:
+	Solving state:          62.45 ms
+		Update problem:   0.566 ms
+		Solver:           62.074 ms
+		Update state:     0.148 ms
+	Solving covariance:     0 ms
+Iterations:
+	User-defined limit:         20
+	Average iterations:         3
+	Max. iterations:            14
+Termination:
+	Convergence:                   100 %
+	Interrupted by problem change: 0 %
+	Max. iterations reached:       0 %
+
+PROCESSORS -------------------------
+
+ProcessorTrackerLandmarkApriltag - APRILTAG PROC:
+	total time:           1.35657 s
+	Processing captures:
+		total time:         1.35657 s
+		captures processed: 209
+		average time:       6.49078 ms
+		max time:           26.246 ms
+	Processing keyframes:
+		total time:         2e-06 s
+		kf processed:       1
+		average time:       0.002 ms
+		max time:           0.002 ms
+
+ProcessorImu - IMU PROC:
+	total time:           0.105198 s
+	Processing captures:
+		total time:         0.105181 s
+		captures processed: 2091
+		average time:       0.0503018 ms
+		max time:           2.289 ms
+	Processing keyframes:
+		total time:         1.7e-05 s
+		kf processed:       35
+		average time:       0.000485714 ms
+		max time:           0.001 ms
+
+PUBLISHERS -------------------------
+
+PublisherGraph - graph:
+	total time:           0.752675 s
+	executions:           357
+	average time:         2.10833 ms
+	max time:             35.619 ms
+
+PublisherTf -  :
+	total time:           0.095749 s
+	executions:           357
+	average time:         0.268204 ms
+	max time:             35.696 ms
+
+PublisherApriltagDebug - image_debug:
+	total time:           0.508739 s
+	executions:           351
+	average time:         1.4494 ms
+	max time:             35.666 ms
+

@@ -1,0 +1,90 @@
+BEFORE REMOVING CAST
+
+SolverManager:
+Total values:
+	Solving state:          2.89588 s - executions: 310
+		Update problem:   0.032032 s (1.10612 %)
+		Solver:           2.85343 s (98.5341 %)
+		Update state:     0.010034 s (0.346492 %)
+	Solving covariance:     0 s - executions: 0
+Average:
+	Solving state:          9.34155 ms
+		Update problem:   0.103329 ms
+		Solver:           9.20462 ms
+		Update state:     0.0323677 ms
+	Solving covariance:     -nan ms
+Max values:
+	Solving state:          49.997 ms
+		Update problem:   1.187 ms
+		Solver:           49.883 ms
+		Update state:     0.16 ms
+	Solving covariance:     0 ms
+Iterations:
+	User-defined limit:         20
+	Average iterations:         5
+	Max. iterations:            21
+Termination:
+	Convergence:                   92.2581 %
+	Interrupted by problem change: 0.645161 %
+	Max. iterations reached:       7.09677 %
+
+
+SOLVER -----------------------------
+
+SolverManager:
+Total values:
+	Solving state:          3.0789 s - executions: 288
+		Update problem:   0.034178 s (1.11007 %)
+		Solver:           3.03418 s (98.5474 %)
+		Update state:     0.010137 s (0.329241 %)
+	Solving covariance:     0 s - executions: 0
+Average:
+	Solving state:          10.6906 ms
+		Update problem:   0.118674 ms
+		Solver:           10.5353 ms
+		Update state:     0.0351979 ms
+	Solving covariance:     -nan ms
+Max values:
+	Solving state:          63.76 ms
+		Update problem:   0.765 ms
+		Solver:           63.481 ms
+		Update state:     0.172 ms
+	Solving covariance:     0 ms
+Iterations:
+	User-defined limit:         20
+	Average iterations:         6
+	Max. iterations:            21
+Termination:
+	Convergence:                   90.9722 %
+	Interrupted by problem change: 0.347222 %
+	Max. iterations reached:       8.68056 %
+
+
+SolverManager:
+Total values:
+	Solving state:          3.3399 s - executions: 307
+		Update problem:   0.036281 s (1.08629 %)
+		Solver:           3.29183 s (98.5606 %)
+		Update state:     0.011363 s (0.340219 %)
+	Solving covariance:     0 s - executions: 0
+Average:
+	Solving state:          10.8792 ms
+		Update problem:   0.118179 ms
+		Solver:           10.7226 ms
+		Update state:     0.037013 ms
+	Solving covariance:     -nan ms
+Max values:
+	Solving state:          44.001 ms
+		Update problem:   1.16 ms
+		Solver:           43.762 ms
+		Update state:     0.204 ms
+	Solving covariance:     0 ms
+Iterations:
+	User-defined limit:         20
+	Average iterations:         6
+	Max. iterations:            21
+Termination:
+	Convergence:                   92.1824 %
+	Interrupted by problem change: 0.325733 %
+	Max. iterations reached:       7.49186 %
+
