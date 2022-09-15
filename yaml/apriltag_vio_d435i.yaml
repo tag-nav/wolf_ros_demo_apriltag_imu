@@ -4,8 +4,7 @@ config:
     profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
     print_problem: false
-    print_depth: 1             # only if print_problem
-    # print_state: true         # only if print_problem
+    print_depth: 2             # only if print_problem
     print_constr_by: false     # only if print_problem
     print_metric: true        # only if print_problem
     print_state_blocks: true  # only if print_problem
@@ -38,6 +37,7 @@ config:
       plugin: "vision"
       extrinsic:
         pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
+        # pose: [0.00552,-0.0051,-0.01174,  0,0,0,1] #D435i according to rs-sensor-control util
         # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
         # pose: [0,0,0,  0,0,0,1]
       using_raw: true
@@ -53,13 +53,13 @@ config:
   processors:
     -
       type: "ProcessorTrackerLandmarkApriltag"
-      name: "APRILTAG PROC"
+      name: "APRILTAG"
       sensor_name: "CAMERA"
       plugin: "apriltag"
       follow: "processor_tracker_landmark_apriltag.yaml"
     -
       type: "ProcessorImu"
-      name: "IMU PROC"
+      name: "IMU"
       sensor_name: "IMU"
       plugin: "imu"
       follow: "processor_imu.yaml"
@@ -89,13 +89,13 @@ config:
       topic: "graph"
       package: "wolf_ros_node"
       period: 0.1
-      viz_scale: 0.3
+      viz_scale: 0.1
       text_scale: 0.1
       landmark_text_z_offset: 0.3
       landmark_length: 0.5
       frame_width: 0.01
-      frame_length: 0.1
-      frame_vel_scale: 1.0
+      frame_length: 0.2
+      frame_vel_scale: 0.2
     -
       type: "PublisherTf"
       topic: " "
@@ -107,13 +107,13 @@ config:
       publish_odom_tf: true
     -
       type: "PublisherApriltagDebug"
-      processor_name: "APRILTAG PROC"
+      processor_name: "APRILTAG"
       topic: "apriltag_detections"
       package: "wolf_ros_apriltag"
       period: 0.1
     -
       type: "PublisherApriltagClusterPose"
-      processor_name: "APRILTAG PROC"
+      processor_name: "APRILTAG"
       topic: "cluster_pose"
       package: "wolf_ros_apriltag"
       period: 0.1

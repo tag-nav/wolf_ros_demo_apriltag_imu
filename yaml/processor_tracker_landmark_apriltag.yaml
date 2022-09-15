@@ -1,6 +1,6 @@
 # ProcessorBase
 time_tolerance: 0.02
-apply_loss_function: false
+apply_loss_function: true
 
 # ProcessorTracker
 max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
@@ -18,7 +18,7 @@ debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
 
 ippe_min_ratio:     10 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
-ippe_max_rep_error: 100     # to deactivate, set at something big (100)
+ippe_max_rep_error: 10     # to deactivate, set at something big (100)
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
 tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
@@ -34,6 +34,7 @@ tag_width_default:    0.161     # LAAS, Bauzil walls 07/22 $$
 
 # solo3D poster
 $tag_widths:
+    3: 0.1675
     40: 0.1726
     41: 0.1726
     42: 0.1726
@@ -43,16 +44,16 @@ $tag_widths:
     46: 0.1726
 
 # choose the type of factor used when building the problem
-use_proj_factor: true
+use_proj_factor: false
 
 # used for covariance propagation 
-std_pix:          2   # pixel error $$
+std_pix:          4   # pixel error $$
 
 keyframe_vote:
   voting_active:              true
-  nb_vote_for_every_first:    1
-  min_time_span:              0.1    # s
-  max_time_span:              0.3    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
+  nb_vote_for_every_first:    10
+  min_time_span:              0.045    # s
+  max_time_span:              0.055    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
   min_features_for_keyframe:  1
 
 ###############

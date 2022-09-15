@@ -1,11 +1,11 @@
 minimizer: "LEVENBERG_MARQUARDT"
-interrupt_on_problem_change: true
+interrupt_on_problem_change: false
 min_num_iterations: 4
-max_num_iterations: 200
+max_num_iterations: 50
 function_tolerance: 1e-8
 gradient_tolerance: 1e-8
 use_nonmonotonic_steps: false
-period: 0.2                     # note: this must be smaller (i.e. faster) than the KF period in processor_tracker_landmark_apriltag.yaml
+period: 0.05                     # note: this must be smaller (i.e. faster) than the KF period in processor_tracker_landmark_apriltag.yaml
 n_threads: 4
 compute_cov: false
 verbose: 0
