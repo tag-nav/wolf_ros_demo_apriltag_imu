@@ -19,7 +19,7 @@ config:
     prior:
       mode: "initial_guess"
       $state:
-        P: [0,0,0.2]
+        P: [0,0,0.5]
         O: [0.5, -0.5, 0.5, -0.5]  # arbitrary
         V: [0,0,0]
       $sigma:
@@ -37,9 +37,9 @@ config:
       name: "CAMERA"
       plugin: "vision"
       extrinsic:
-        pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
+        # pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
         # pose: [-0.00722495000,  0.00210141000,  0.0198486200, -0.00279745680, 0.000290441225,  0.000725690561,  0.999995782]  # D435i left infra, calib1
-        # pose: [-0.00625492000, -0.000326490000,  0.0202450200, -0.00210374370, 0.000480123914,  0.00111190327,  0.999997055]  # D435i left infra, calib2
+        pose: [-0.00625492000, -0.000326490000,  0.0202450200, -0.00210374370, 0.000480123914,  0.00111190327,  0.999997055]  # D435i left infra, calib2
         # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
         # pose: [0,0,0,  0,0,0,1]
       using_raw: true
@@ -88,10 +88,10 @@ config:
         voting_active:    false
       apply_loss_function: false
 
-  # map:
-  #   - type: "MapBase"
-  #   - plugin: "core"
-  #   - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
+  map:
+    - type: "MapBase"
+    - plugin: "core"
+    - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
 
   ROS subscriber:
     -
