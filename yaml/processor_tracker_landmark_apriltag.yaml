@@ -1,25 +1,25 @@
 # ProcessorBase
 time_tolerance: 0.02
-apply_loss_function: true
+apply_loss_function: false
 
 # ProcessorTracker
 max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
 
 # MotionProvider
-state_getter: true
+state_getter: false
 state_priority: 2
 
 # detector parameters:
-quad_decimate:      0.0      # doing quad detection at lower resolution to speed things up (see end of file)
+quad_decimate:      1.5      # doing quad detection at lower resolution to speed things up (see end of file)
 # quad_decimate:      1.5      # doing quad detection at lower resolution to speed things up (see end of file)
-quad_sigma:         0.0	   # gaussian blur good for noisy images, may be recommended with quad_decimate. Kernel size adapted (see end of this file)
+quad_sigma:         0.5	   # gaussian blur good for noisy images, may be recommended with quad_decimate. Kernel size adapted (see end of this file)
 nthreads:           8       # how many thread during tag detection
 debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
 
-ippe_min_ratio:     10 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
-ippe_max_rep_error: 10     # to deactivate, set at something big (100)
-april_min_decision_margin: 100
+april_min_decision_margin: 10 # april detection quality, around 100. 15 is really bad
+ippe_min_ratio:     20 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
+ippe_max_rep_error: 1     # to deactivate, set at something big (100)
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
 tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
@@ -35,7 +35,6 @@ tag_width_default:    0.161     # LAAS, Bauzil walls 07/22 $$
 
 # solo3D poster
 $tag_widths:
-    3: 0.1675
     40: 0.1726
     41: 0.1726
     42: 0.1726
@@ -48,13 +47,13 @@ $tag_widths:
 use_proj_factor: false
 
 # used for covariance propagation 
-std_pix:          4   # pixel error $$
+std_pix:          0.1   # pixel error $$
 
 keyframe_vote:
   voting_active:              true
   nb_vote_for_every_first:    10
-  min_time_span:              0.045    # s
-  max_time_span:              0.055    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
+  min_time_span:              0.04    # s
+  max_time_span:              0.05    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
   min_features_for_keyframe:  1
 
 ###############
