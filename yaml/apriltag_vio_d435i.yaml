@@ -90,7 +90,8 @@ config:
   map:
     - type: "MapBase"
     - plugin: "core"
-    - filename: "/home/jsola/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
+    - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
+    # - filename: "/home/jsola/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
 
   ROS subscriber:
     -
