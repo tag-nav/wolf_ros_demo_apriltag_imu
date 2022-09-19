@@ -3,7 +3,7 @@ config:
   debug:
     profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
-    print_problem: true
+    print_problem: false
     print_depth: 2             # only if print_problem
     print_constr_by: false     # only if print_problem
     print_metric: true        # only if print_problem
@@ -13,17 +13,17 @@ config:
   problem:
     node_rate: 200
     follow: "tree_manager.yaml"
-    frame_structure: "PO"
+    frame_structure: "POV"
     dimension: 3
     prior:
-      mode: "initial guess"
+      mode: "initial_guess"
       $state:
-        P: [0,0,0]
+        P: [0,0,0.2]
         O: [0.5, -0.5, 0.5, -0.5]  # arbitrary
         V: [0,0,0]
       $sigma:
-       P: [0.00001, 0.00001, 0.00001]
-       O: [0.1, 0.1, 0.1]
+       P: [10, 10, 10]
+       O: [30, 30, 30]
        V: [0.1, 0.1, 0.1]
       time_tolerance: 0.005
       
@@ -36,9 +36,19 @@ config:
       name: "CAMERA"
       plugin: "vision"
       extrinsic:
-        pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
+        # pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
+        pose: [0.00552,-0.0051,-0.01174,  0,0,0,1] #D435i according to rs-sensor-control util
+        # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
+        # pose: [0,0,0,  0,0,0,1]
       using_raw: true
       follow: "camera_d435i.yaml"
+    -
+      type: "SensorImu"
+      name: "IMU"
+      plugin: "imu"
+      extrinsic:
+        pose:  [0,0,0, 0,0,0,1]
+      follow: "imu_d435i.yaml"
 
   processors:
     -
@@ -47,11 +57,17 @@ config:
       sensor_name: "CAMERA"
       plugin: "apriltag"
       follow: "processor_tracker_landmark_apriltag.yaml"
+    -
+      type: "ProcessorImu"
+      name: "IMU"
+      sensor_name: "IMU"
+      plugin: "imu"
+      follow: "processor_imu.yaml"
 
   map:
     - type: "MapBase"
     - plugin: "core"
-    - filename: "/home/mfourmy/catkin_ws/src/wolf_demo_apriltag_imu/yaml/poster_map_full.yaml"
+    - filename: "/home/jsola/catkin_ws/src/wolf_demo_apriltag_imu/yaml/map_tag_3.yaml"
 
   ROS subscriber:
     -
@@ -59,6 +75,13 @@ config:
       type: "SubscriberCamera"
       topic: "/camera/infra1/image_rect_raw"
       sensor_name: "CAMERA"
+    -
+      package: "wolf_ros_imu"
+      type: "SubscriberImu"
+      topic: "/camera/imu"
+      sensor_name: "IMU"
+      cov_source: "sensor"
+      in_degrees: false
 
   ROS publisher:
     -
