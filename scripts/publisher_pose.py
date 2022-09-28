@@ -12,7 +12,7 @@ from sensor_msgs.msg import Image
 INPUT_TOPIC = '/camera/infra1/image_rect_raw'
 POSE_TOPIC = '/pose_altitude'
 RATE = 100  # Hz
-POSE = [0,0, 0.2, 0,0,0,1]
+POSE = [0,0, 0.272, 0,0,0,1]  # altitude taken from mocap
 
 pub = rospy.Publisher(POSE_TOPIC, PoseStamped, queue_size=10)
 msg_pose = PoseStamped()

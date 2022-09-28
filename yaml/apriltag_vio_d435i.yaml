@@ -4,9 +4,9 @@ config:
     profiling: true
     profiling_file: "~/wolf_demo_apriltag_profiling.txt"
     print_problem: true
-    print_depth: 1             # only if print_problem
+    print_depth: 3            # only if print_problem
     print_constr_by: false     # only if print_problem
-    print_metric: false        # only if print_problem
+    print_metric: true        # only if print_problem
     print_state_blocks: false  # only if print_problem
     print_period: 1.0            # only if print_problem
    
@@ -38,7 +38,8 @@ config:
       extrinsic:
         # pose: [-0.006, 0.005, 0.012,  0,0,0,1]  # D435i left infra
         # pose: [-0.00722495000,  0.00210141000,  0.0198486200, -0.00279745680, 0.000290441225,  0.000725690561,  0.999995782]  # D435i left infra, calib1
-        pose: [-0.00625492000, -0.000326490000,  0.0202450200, -0.00210374370, 0.000480123914,  0.00111190327,  0.999997055]  # D435i left infra, calib2
+        # pose: [-0.00625492000, -0.000326490000,  0.0202450200, -0.00210374370, 0.000480123914,  0.00111190327,  0.999997055]  # D435i left infra, calib2
+        pose: [-0.0060059,   0.00743455,  0.02474446,   -0.00206500880, 0.000607893287,  0.00114383437,  0.999997029]  # calib567 mean (after imu calib)
         # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
         # pose: [0,0,0,  0,0,0,1]
       using_raw: true
@@ -58,7 +59,7 @@ config:
         pose: [0,0,0, 0,0,0,1]
       std_px: 100
       std_py: 100
-      std_pz: 0.001
+      std_pz: 0.01
       std_ox: 10
       std_oy: 10
       std_oz: 10
