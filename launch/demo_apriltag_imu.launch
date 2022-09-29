@@ -15,9 +15,15 @@
     <!-- Convention used by all files -->
     <!-- <arg name="setup_name" default="simu" /> -->
     <arg name="setup_name" default="d435i" />
+    <arg name="namespace_cam" value="camera/infra1" />
+    <param name="topic_image_raw_in" value="/camera/infra1/image_rect_raw" />
+    <param name="topic_image_info_out" value="/camera/infra1/camera_info" />
+    <param name="camera_yaml_path" value="$(find wolf_demo_apriltag_imu)/yaml/camera_d435i_calib.yaml" />    
     <!-- Wolf autosetup file name -->
     <arg name="param_file" default="apriltag_vio_$(arg setup_name).yaml" />
 
+
+    <remap from="/camera/infra1/image_raw" to="/camera/infra1/image_rect_raw" />
 
     <!--ROSBAG PLAY-->
     <!--if the bag argument is not set, no bag is read here-->
@@ -50,6 +56,17 @@
           pkg="wolf_demo_apriltag_imu"
           >
     </node>
+
+    <node type="publisher_camera_info.py"
+          name="publisher_camera_info"
+          pkg="wolf_ros_vision"
+          >
+    </node>
+
+    <node type="image_proc"
+          name="image_proc"
+          pkg="image_proc"
+          ns="$(arg namespace_cam)" />
 
     <!--WOLF-->
     <node type="wolf_ros_node" 

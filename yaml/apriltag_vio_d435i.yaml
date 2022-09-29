@@ -42,8 +42,8 @@ config:
         pose: [-0.0060059,   0.00743455,  0.02474446,   -0.00206500880, 0.000607893287,  0.00114383437,  0.999997029]  # calib567 mean (after imu calib)
         # pose: [0.6, -0.005, -0.012,  0,0,0,1]  # FAKE
         # pose: [0,0,0,  0,0,0,1]
-      using_raw: true
-      follow: "camera_d435i.yaml"
+      using_raw: false
+      follow: "camera_d435i_calib.yaml"
     -
       type: "SensorImu"
       name: "IMU"
@@ -98,7 +98,8 @@ config:
     -
       package: "wolf_ros_vision"
       type: "SubscriberCamera"
-      topic: "/camera/infra1/image_rect_raw"
+      # topic: "/camera/infra1/image_rect_raw"
+      topic: "/camera/infra1/image_rect"  # output of image_proc
       sensor_name: "CAMERA"
     -
       package: "wolf_ros_imu"

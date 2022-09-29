@@ -4,13 +4,16 @@ camera_name: d435i_infra_left
 camera_matrix:
   rows: 3
   cols: 3
-  data: [419.52520751953125, 0.0, 427.8790588378906, 0.0, 419.52520751953125, 241.32180786132812, 0.0, 0.0, 1.0]  # from topic
+  # data: [419.52520751953125, 0.0, 427.8790588378906, 0.0, 419.52520751953125, 241.32180786132812, 0.0, 0.0, 1.0]  # from topic
   # data: [416.30976145, 0.0, 426.80562534, 0.0, 416.99275196, 241.40180955, 0.0, 0.0, 1.0]   # calibration
+  data: [415.89552872,   0.0,       428.25774097, 
+          0.0,         416.62637535, 241.3971875,  
+          0.0,           0.0,           1.0        ]
 distortion_model: plumb_bob
 distortion_coefficients:
   rows: 1
   cols: 5
-  data: [0.0, 0.0, 0.0, 0.0, 0.0]  # tangential distortion not supported by wolf
+  data: [-0.00512239278, -0.00129589934,  0.0000485615219,  0.000486260672, 0.0]  # tangential distortion not supported by wolf
 rectification_matrix:
   rows: 3
   cols: 3
@@ -18,4 +21,10 @@ rectification_matrix:
 projection_matrix:
   rows: 3
   cols: 4
-  data: [419.52520751953125, 0.0, 427.8790588378906, 0.0, 0.0, 419.52520751953125, 241.32180786132812, 0.0, 0.0, 0.0, 1.0, 0.0]
+  data: [412.54641724, 0.0,          428.47418746, 0.0,
+         0.0,          413.10403442, 427.69148895, 0.0,
+         0.0,          0.0,          1.0,          0.0]  # undistort alpha=0.0 (black surfaces, not cropped)
+
+  # data: [408.18737793, 0.0, 428.76372755, 0.0, 
+  #        0.0, 408.44235229, 427.87881628, 0.0, 
+  #        0.0, 0.0, 1.0, 0.0]  # alpha=1.0, supposed to be cropped

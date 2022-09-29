@@ -93,12 +93,10 @@ Visualization Manager:
       Marker Topic: /wolf_ros_node/graph_factors
       Name: Factors
       Namespaces:
-        factors_APRILTAG: false
+        factors_APRILTAG: true
         factors_IMU: true
-        factors_prc Pose: false
         factors_text_APRILTAG: false
         factors_text_IMU: false
-        factors_text_prc Pose: false
       Queue Size: 1
       Value: true
     - Class: rviz/MarkerArray
