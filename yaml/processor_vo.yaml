@@ -1,0 +1,88 @@
+####################################
+# ProcessorTracker parameters
+####################################
+time_tolerance: 0.02
+
+state_getter: false
+state_priority: 0
+
+keyframe_vote:
+    voting_active: false
+    # Trigger a new keyframe creation as well as detection of new keypoints in last frame
+    # when the track number goes below min_features_for_keyframe in incoming
+    min_features_for_keyframe: 20
+
+# Use a robust cost function
+apply_loss_function: false
+
+# Select the best new Keypoints when performing detection
+max_new_features: 20
+
+####################################
+# ProcessorVisualOdometry parameters
+####################################
+
+#-----------------------------------
+# Pre-processor parameters
+#-----------------------------------
+
+# Image Equalization methods
+#   0: none
+#   1: average
+#   2: histogram_equalization
+#   3: CLAHE = Contrast Limited Adaptive Histogram Equalization, 1-1.5 ms overhead
+equalization:
+    method: 1
+    average:
+        median: 127 # half of 8 bits = 255/2 = 127.5 --> to integer <-- TODO we could maybe automate this
+    histogram:
+    clahe:
+        clip_limit: 2
+        tile_grid_size: [8,8]
+
+# FAST KeyPoint detection 
+fast:
+    # Threshold on the keypoint pixel intensity (in uchar [0-255]) 
+    # the higher, the more selective the detector is
+    threshold: 10
+    # Avoids getting multiple keypoints at the same place
+    non_max_suppresion: false
+    
+# Lucas Kanade tracking
+klt:
+    patch_width:      21
+    patch_height:     21
+    nlevels_pyramids: 3
+    max_err:          0.2
+
+# Tesselation grid    
+grid:
+    # number of cells used by the active search grid data structure
+    nbr_cells_h: 10  # horizontal
+    nbr_cells_v: 10  # vertical
+    # minimum margin of the region of interest from the edges of the image 
+    margin: 10
+    # reduce the size of each region of interest by n pixels to prevent keypoints from being too close
+    separation: 10
+
+ransac:
+    # specifies a desirable level of confidence (probability) that the estimated matrix is correct
+    prob: 0.999
+    # maximum distance from a point to an epipolar line in pixels, beyond which the point 
+    # is considered an outlier and is not used for computing the final fundamental matrix
+    thresh: 0.4
+
+
+#-----------------------------------
+# Processor parameters
+#-----------------------------------
+
+# standard deviation of the pixel reprojection factor 
+std_pix: 0.5
+
+# Rules to create a new landmark from a track
+lmk_creation:
+    # wait until the track is old enough
+    min_track_length_for_landmark: 10
+    # enough pixel distance (does not make a big difference)
+    min_pixel_dist: 4.0
