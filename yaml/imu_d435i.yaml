@@ -1,5 +1,5 @@
-a_noise:                0.01     # standard deviation of Acceleration noise (same for all the axis) in m/s2
-w_noise:                0.001    # standard deviation of Gyroscope noise (same for all the axis) in rad/sec
+a_noise:                0.00001     # standard deviation of Acceleration noise (same for all the axis) in m/s2
+w_noise:                0.00001    # standard deviation of Gyroscope noise (same for all the axis) in rad/sec
 ab_initial_stdev:       0.2     # m/s2    - initial bias
 wb_initial_stdev:       0.01     # rad/sec - initial bias
 ab_rate_stdev:          0.0001       # m/s2/sqrt(s)

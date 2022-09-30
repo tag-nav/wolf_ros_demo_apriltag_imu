@@ -8,4 +8,4 @@ use_nonmonotonic_steps: false
 period: 0.05                     # note: this must be smaller (i.e. faster) than the KF period in processor_tracker_landmark_apriltag.yaml
 n_threads: 4
 compute_cov: false
-verbose: 0
+verbose: 1
