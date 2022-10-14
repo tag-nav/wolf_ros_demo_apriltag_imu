@@ -141,7 +141,7 @@ stages:
 .clone_wolfrosapriltag_template: &clone_wolfrosapriltag_definition
   - roscd
   - cd ../src
-  - git clone -b $WOLF_ROS_APRILTAG_BRANCHssh://git@gitlab.iri.upc.edu:2202/mobile_robotics/wolf_projects/wolf_ros/wolf_ros_apriltag.git
+  - git clone -b $WOLF_ROS_APRILTAG_BRANCH ssh://git@gitlab.iri.upc.edu:2202/mobile_robotics/wolf_projects/wolf_ros/wolf_ros_apriltag.git
 
 .demo_template: &demo_definition
   - roscd
