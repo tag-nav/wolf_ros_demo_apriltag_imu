@@ -1,5 +1,6 @@
 width: 640
 height: 480
+using_raw: true
 camera_name: camera
 camera_matrix:
   rows: 3
