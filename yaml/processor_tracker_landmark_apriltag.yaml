@@ -40,6 +40,7 @@ add_3d_cstr: false             # add 3D constraints between the KF so that they 
 apply_loss_function: false
 
 state_getter: false
+state_priority: 2
 
 ###############
 # Apriltag settings
