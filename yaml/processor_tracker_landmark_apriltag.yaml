@@ -6,6 +6,7 @@ debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
 ippe_min_ratio:     2 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
 ippe_max_rep_error: 100     # to deactivate, set at something big (100)
+use_proj_factor: true
 
 tag_family:           "tag36h11"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
 tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
