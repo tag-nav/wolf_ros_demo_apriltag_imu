@@ -126,7 +126,7 @@ stages:
 .clone_wolfrosnode_template: &clone_wolfrosnode_definition
   - roscd
   - cd ../src
-  - git clone -b $WOLF_ROS_CORE_BRANCH ssh://git@gitlab.iri.upc.edu:2202/mobile_robotics/wolf_projects/wolf_ros/wolf_ros_node.git
+  - git clone -b $WOLF_ROS_NODE_BRANCH ssh://git@gitlab.iri.upc.edu:2202/mobile_robotics/wolf_projects/wolf_ros/wolf_ros_node.git
 
 .clone_wolfrosimu_template: &clone_wolfrosimu_definition
   - roscd
