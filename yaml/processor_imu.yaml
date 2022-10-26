@@ -6,3 +6,8 @@ keyframe_vote:
     max_buff_length:    500   # motion deltas
     dist_traveled:      2.0   # meters
     angle_turned:       0.1   # radians (1 rad approx 57 deg, approx 60 deg)
+bootstrap:
+    enable: true 
+    method: "G"             # methods: "STATIC", "G" or "V0_G"
+    averaging_length: 0.5  # seconds
+    keyframe_provider_processor_name: "processor_other_name" # Not yet implemented

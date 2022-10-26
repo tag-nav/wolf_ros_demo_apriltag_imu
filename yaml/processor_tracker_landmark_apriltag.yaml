@@ -4,6 +4,8 @@ quad_sigma:         0.0	   # gaussian blur good for noisy images, may be recomme
 nthreads:           8       # how many thread during tag detection (does not change much?)
 debug:              false    # write some debugging images
 refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
+
+april_min_decision_margin: 1 # april detection quality, around 100. 15 is really bad
 ippe_min_ratio:     2 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
 ippe_max_rep_error: 100     # to deactivate, set at something big (100)
 use_proj_factor: true
