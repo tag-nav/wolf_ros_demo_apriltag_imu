@@ -2,3 +2,5 @@
 /.project
 *.bag
 /build
+/.settings
+/.vscode
