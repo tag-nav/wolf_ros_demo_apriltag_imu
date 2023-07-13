@@ -1,0 +1,87 @@
+# detector parameters:
+quad_decimate:      0.0      # doing quad detection at lower resolution to speed things up (see end of file)
+quad_sigma:         0.0	   # gaussian blur good for noisy images, may be recommended with quad_decimate. Kernel size adapted (see end of this file)
+nthreads:           8       # how many thread during tag detection (does not change much?)
+debug:              false    # write some debugging images
+refine_edges:       true    # better edge detection if quad_decimate > 1 (quite inexpensive, almost no diff)
+
+april_min_decision_margin: 1 # april detection quality, around 100. 15 is really bad
+ippe_min_ratio:     2 	# quite arbitrary, always > 1 (to deactive, set at something < 1)
+ippe_max_rep_error: 100     # to deactivate, set at something big (100)
+use_proj_factor: true
+
+tag_family:           "tagCustom52h12"     # see in Wolf processor_tracker_landmark_apriltag.cpp for available families
+tag_black_border:     1      # usually 1, 2 for Kalibr aprilgrid for ex
+# tag_width_default:    0.165   # used if tag width not specified -- IRI $$
+tag_width_default:    0.2   # used if tag width not specified   -- Simu $$
+# tag_width_default:    0.055   # used if tag width not specified   -- Calibration $$
+# tag_width_default:    0.166   # used if tag width not specified -- LAAS (B181) $$
+# tag_width_default:    0.162   # used if tag width not specified -- LAAS, 04/07 $$
+
+# specific tag widths if using tags of different sizes
+$tag_widths:
+    0: 0.00666666667
+    1: 0.0266666667
+    2: 0.200
+    # -1: 0.0
+
+# used for covariance propagation 
+std_pix:          4   # pixel error $$
+
+time_tolerance: 0.02
+    
+keyframe_vote:
+  voting_active:              true
+  nb_vote_for_every_first:    1
+  min_time_span:              0.1    # s
+  max_time_span:              0.3    # s ; note: this must be higher (i.e. slower) than the solve period in solver.yaml
+  min_features_for_keyframe:  1
+
+max_new_features: -1   # max number of features detected in detectNewFeatures() (-1: unlimited)
+
+reestimate_last_frame: false   # for a better prior on the new keyframe: use only if no motion processor
+
+add_3d_cstr: false             # add 3D constraints between the KF so that they do not jump when using apriltag only
+
+apply_loss_function: false
+
+state_getter: false
+state_priority: 2
+
+###############
+# Apriltag settings
+###############
+# int nthreads;
+# How many threads should be used?
+
+# float quad_decimate;
+# detection of quads can be done on a lower-resolution image,
+# improving speed at a cost of pose accuracy and a slight
+# decrease in detection rate. Decoding the binary payload is
+# still done at full resolution. .
+# ! Special optimized value of 1.5
+
+# float quad_sigma;
+# What Gaussian blur should be applied to the segmented image
+# (used for quad detection?)  Parameter is the standard deviation
+# in pixels.  Very noisy images benefit from non-zero values
+# (e.g. 0.8).
+
+# int refine_edges;
+# When non-zero, the edges of the each quad are adjusted to "snap
+# to" strong gradients nearby. This is useful when decimation is
+# employed, as it can increase the quality of the initial quad
+# estimate substantially. Generally recommended to be on (1).
+# Very computationally inexpensive. Option is ignored if
+# quad_decimate = 1.
+
+# double decode_sharpening;
+# How much sharpening should be done to decoded images? This
+# can help decode small tags but may or may not help in odd
+# lighting conditions or low light conditions.
+# The default value is 0.25.
+
+# int debug;
+# When non-zero, write a variety of debugging images to the
+# current working directory at various stages through the
+# detection process. (Somewhat slow).
