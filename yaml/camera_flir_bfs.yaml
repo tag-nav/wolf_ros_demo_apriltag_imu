@@ -1,0 +1,22 @@
+width: 2448
+height: 2048
+using_raw: true
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [3467.071526, 0.0, 1264.738383, 0.0, 3466.012814, 1015.571252, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.144506, 0.037049, 0.000298, 0.001509, 0.0]  # tangential distortion not supported by wolf
+  # data: [-0.117928, 0.092265, -0.002119, -0.002615, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [3402.408936, 0.0, 1267.821593, 0.0, 0.0, 3420.333984, 1015.143769, 0.0, 0.0, 0.0, 1.0, 0.0]
