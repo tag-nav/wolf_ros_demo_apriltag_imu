@@ -110,6 +110,12 @@ config:
       package: "wolf_ros_apriltag"
       period: 0.1
     # -
+      type: "PublisherTrajectory"
+      package: "wolf_ros_node"
+      topic: "/odom"
+      frame_id: " "
+      period: 0.1
+    # -
     #   type: "PublisherImuBias"
     #   package: "wolf_ros_imu"
     #   topic: "/imu_bias"
