@@ -109,7 +109,7 @@ config:
       topic: "image_debug"
       package: "wolf_ros_apriltag"
       period: 0.1
-    # -
+    -
       type: "PublisherTrajectory"
       package: "wolf_ros_node"
       topic: "/odom"
